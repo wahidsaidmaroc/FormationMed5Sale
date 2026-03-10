@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional portfolio of Said Boussadra - Specialized Technician in Automotive Diagnostics & Embedded Electronics">
+    <title>Said Boussadra - Automotive Diagnostics Specialist</title>
+    
+    <style>
+        /* ==================== CSS Variables & Reset ==================== */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f97316;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==================== Typography ==================== */
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* ==================== Layout & Spacing ==================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            scroll-margin-top: 80px;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        /* ==================== Navigation ==================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 0.4rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* ==================== Hero Section ==================== */
+        .hero {
+            margin-top: 80px;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -30%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(20px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 300;
+        }
+
+        .hero .intro {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ==================== Buttons ==================== */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            margin-right: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-white:hover {
+            background: var(--bg-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ==================== About Section ==================== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ==================== Education Section ==================== */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+            width: calc(50% - 30px);
+            text-align: right;
+            padding-right: 2rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+            width: calc(50% - 30px);
+            text-align: left;
+            padding-left: 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--primary-color);
+            border: 4px solid var(--bg-white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--bg-light);
+            z-index: 1;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ==================== Experience Section ==================== */
+        .experience-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border-top: 3px solid var(--primary-color);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-top-color: var(--accent-color);
+        }
+
+        .experience-date {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-role {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .experience-company {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .experience-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ==================== Skills Section ==================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-dark);
+        }
+
+        .skill-percentage {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+            animation: stretchProgress 1.5s ease-out forwards;
+            transform-origin: left;
+        }
+
+        @keyframes stretchProgress {
+            from {
+                width: 0;
+            }
+            to {
+                width: var(--progress);
+            }
+        }
+
+        /* ==================== Languages & Qualities ==================== */
+        .languages-qualities {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .language-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .language-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-item::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .quality-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .quality-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quality-item::before {
+            content: '✓';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--success-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 1rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* ==================== Interests Section ==================== */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .interest-card {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .interest-card:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .interest-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .interest-card p {
+            margin: 0;
+        }
+
+        /* ==================== Contact Section ==================== */
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-message.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+            border: 1px solid var(--success-color);
+        }
+
+        .form-message.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid #ef4444;
+        }
+
+        /* ==================== Footer ==================== */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-info a {
+            color: white;
+        }
+
+        footer .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ==================== Responsive Design ==================== */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem 2rem;
+                gap: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero .intro {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                display: block;
+                margin: 0.5rem auto;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                width: 100%;
+                margin: 0;
+                padding-left: 2rem;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 0;
+            }
+
+            .experience-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .languages-qualities {
+                grid-template-columns: 1fr;
+            }
+
+            .interests-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .nav-links.active {
+                padding: 0.5rem 1rem;
+            }
+
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-role {
+                font-size: 1rem;
+            }
+        }
+
+        /* ==================== Utilities ==================== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== Navigation ==================== -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">SB</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== Hero Section ==================== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>SAID BOUSSADRA</h1>
+            <p class="subtitle">Specialized Technician in Automotive Diagnostics & Embedded Electronics</p>
+            <p class="intro">Recently graduated technician passionate about automotive electronics, diagnostics, and embedded systems. Committed to delivering excellence in vehicle maintenance and innovative solutions.</p>
+            <div class="mt-4">
+                <a href="#contact" class="btn btn-white">Contact Me</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== About Section ==================== -->
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I am a specialized technician in automotive diagnostics and embedded electronics with a strong foundation in vehicle maintenance and electrical systems. My passion lies in understanding complex automotive systems, troubleshooting diagnostic issues, and implementing innovative embedded solutions.</p>
+                <p>With hands-on experience gained through multiple internships and practical training, I bring a meticulous approach to vehicle diagnostics, component repair, and system optimization. I'm dedicated to continuous learning and staying updated with the latest automotive technologies.</p>
+            </div>
+            <div class="about-features">
+                <div class="feature">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Technical Expertise</h3>
+                    <p>Proficient in automotive diagnostics and embedded electronics systems</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Certified Professional</h3>
+                    <p>Recently graduated and recognized specialist in diagnostics</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💼</div>
+                    <h3>Practical Experience</h3>
+                    <p>Diverse internship experience across automotive companies</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Problem Solver</h3>
+                    <p>Efficient troubleshooting and maintenance capabilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Education Section ==================== -->
+    <section id="education" class="container">
+        <h2>Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2023–2024</div>
+                    <div class="timeline-title">Specialized Technician in Diagnostic and Embedded Electronics</div>
+                    <div class="timeline-description">Advanced technical diploma focusing on automotive diagnostics and embedded systems integration</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2022–2023</div>
+                    <div class="timeline-title">Microsoft Office Specialist</div>
+                    <div class="timeline-description">Certified in MS Word, Excel, and PowerPoint proficiency with advanced practical applications</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2019–2020</div>
+                    <div class="timeline-title">Baccalaureate in Life and Earth Sciences</div>
+                    <div class="timeline-description">Scientific foundation degree with comprehensive coverage of life sciences and earth systems</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Experience Section ==================== -->
+    <section id="experience" class="container">
+        <h2>Professional Experience</h2>
+        <div class="experience-cards">
+            <div class="experience-card">
+                <div class="experience-date">Jan 2023</div>
+                <div class="experience-role">Auto Electricity Intern</div>
+                <div class="experience-company">Garage</div>
+                <div class="experience-description">Gained foundational knowledge in automotive electrical systems, wiring diagrams, and basic troubleshooting techniques.</div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-date">Oct 2023</div>
+                <div class="experience-role">Auto Mechanics Intern</div>
+                <div class="experience-company">TATA MOTORS – Coripev</div>
+                <div class="experience-description">Worked with advanced automotive systems and performed engine diagnostics and maintenance procedures on commercial vehicles.</div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-date">Dec 2023</div>
+                <div class="experience-role">Auto Mechanics Intern</div>
+                <div class="experience-company">TATA MOTORS – Coripev</div>
+                <div class="experience-description">Continued specialized training in vehicle mechanics and diagnostic procedures with emphasis on heavy-duty vehicle maintenance.</div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-date">Feb 2024</div>
+                <div class="experience-role">Auto Diagnostic Intern</div>
+                <div class="experience-company">Garage</div>
+                <div class="experience-description">Specialized training in using diagnostic tools, reading error codes, and implementing systematic troubleshooting methodologies.</div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-date">Sep–Oct 2024</div>
+                <div class="experience-role">Auto Diagnostic Intern</div>
+                <div class="experience-company">Renault Dacia – Hakam Frères</div>
+                <div class="experience-description">Advanced diagnostic experience with Renault vehicles, utilizing specialized diagnostic software and tools for precise fault identification.</div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-date">Apr–Jun 2025</div>
+                <div class="experience-role">Maintenance Operator</div>
+                <div class="experience-company">LEAR Corporation</div>
+                <div class="experience-description">Current role as a maintenance professional ensuring operational excellence and preventive maintenance in a manufacturing environment.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Skills Section ==================== -->
+    <section id="skills" class="container">
+        <h2>Professional Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Automotive Diagnostics</span>
+                    <span class="skill-percentage">95%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--progress: 95%"></div>
+                </div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Embedded Electronics</span>
+                    <span class="skill-percentage">88%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--progress: 88%"></div>
+                </div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Vehicle Maintenance</span>
+                    <span class="skill-percentage">92%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--progress: 92%"></div>
+                </div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Microsoft Word</span>
+                    <span class="skill-percentage">85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--progress: 85%"></div>
+                </div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Microsoft Excel</span>
+                    <span class="skill-percentage">80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--progress: 80%"></div>
+                </div>
+            </div>
+
+            <div class="skill-item">
+                <div class="skill-name">
+                    <span>Microsoft PowerPoint</span>
+                    <span class="skill-percentage">82%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="--progress: 82%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Languages & Qualities ==================== -->
+    <section class="container">
+        <h2>Languages & Personal Qualities</h2>
+        <div class="languages-qualities">
+            <div>
+                <h3 style="margin-bottom: 1.5rem;">Languages</h3>
+                <div class="language-item">Arabic</div>
+                <div class="language-item">French</div>
+                <div class="language-item">English</div>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1.5rem;">Personal Qualities</h3>
+                <div class="quality-item">Serious & Professional</div>
+                <div class="quality-item">Active & Motivated</div>
+                <div class="quality-item">Punctual & Reliable</div>
+                <div class="quality-item">Team Player</div>
+                <div class="quality-item">Sociable & Communicative</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Interests Section ==================== -->
+    <section class="container">
+        <h2>Interests & Hobbies</h2>
+        <div class="interests-grid">
+            <div class="interest-card">
+                <div class="interest-icon">📚</div>
+                <h3>Literature</h3>
+                <p>Passionate about reading and exploring diverse literary works</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">🎨</div>
+                <h3>Arts</h3>
+                <p>Appreciating and creating visual arts and creative expressions</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">🎵</div>
+                <h3>Music</h3>
+                <p>Enjoying various music genres and exploring musical appreciation</p>
+            </div>
+            <div class="interest-card">
+                <div class="interest-icon">⚽</div>
+                <h3>Sports</h3>
+                <p>Active participation and enthusiasm in physical activities and sports</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Contact Section ==================== -->
+    <section id="contact" class="container">
+        <h2>Get In Touch</h2>
+        <div class="contact-wrapper">
+            <form id="contactForm" method="POST">
+                <div id="formMessage" class="form-message"></div>
+
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-right: 0;">Send Message</button>
+            </form>
+
+            <div class="contact-info mt-4" style="text-align: center; margin-top: 3rem;">
+                <div>
+                    <strong>Quick Contact Info</strong>
+                    <p>💼 Location: Sale, Morocco</p>
+                    <p>📱 Phone: <a href="tel:+212624920738">+212 6 24 92 07 38</a></p>
+                    <p>📧 Email: <a href="mailto:saidvvd@gmail.com">saidvvd@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== Footer ==================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <div>📱 +212 6 24 92 07 38</div>
+                        <div><a href="mailto:saidvvd@gmail.com">📧 saidvvd@gmail.com</a></div>
+                        <div>📍 Sale, Morocco</div>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="#about" style="color: white;">About</a>
+                        <a href="#experience" style="color: white;">Experience</a>
+                        <a href="#skills" style="color: white;">Skills</a>
+                        <a href="#contact" style="color: white;">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Follow</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="LinkedIn">in</a>
+                        <a href="#" class="social-icon" title="GitHub">gh</a>
+                        <a href="#" class="social-icon" title="Email">@</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <p class="copyright">&copy; 2025 Said Boussadra. All rights reserved. | Specialized Technician in Automotive Diagnostics & Embedded Electronics</p>
+        </div>
+    </footer>
+
+    <!-- ==================== JavaScript ==================== -->
+    <script>
+        // ==================== Mobile Navigation Toggle ====================
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ==================== Smooth Scrolling ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ==================== Form Validation & Submission ====================
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Validate inputs
+            if (!name || !email || !message) {
+                showMessage('Please fill in all required fields.', 'error');
+                return;
+            }
+
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            // Simulate form submission (in production, you'd send to a server)
+            showMessage('Thank you! Your message has been received. I\'ll get back to you soon!', 'success');
+
+            // Clear form
+            contactForm.reset();
+
+            // Optional: Log the form data
+            console.log('Form submitted:', { name, email, message });
+        });
+
+        function showMessage(text, type) {
+            formMessage.textContent = text;
+            formMessage.className = 'form-message ' + type;
+            formMessage.style.display = 'block';
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // ==================== Scroll Animations ====================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and items
+        document.querySelectorAll('.experience-card, .skill-item, .interest-card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // ==================== Active Navigation Link ====================
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--primary-color)';
+                }
+            });
+        });
+
+        // ==================== Navbar Background on Scroll ====================
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.pageYOffset > 50) {
+                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

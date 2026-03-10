@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meryem Ryad — Portfolio</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- ===================== ALL CSS ===================== -->
+    <style>
+    :root{--primary:#2563eb;--primary-dark:#1d4ed8;--accent:#0ea5e9;--dark:#0f172a;--dark-soft:#1e293b;--light:#f8fafc;--gray:#64748b;--white:#fff;--radius:16px;--shadow:0 4px 24px rgba(0,0,0,.08);--shadow-lg:0 12px 40px rgba(0,0,0,.12);--transition:all .3s ease}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:80px}
+    body{font-family:'Inter',sans-serif;color:var(--dark);line-height:1.7;overflow-x:hidden}
+    ::selection{background:var(--primary);color:var(--white)}
+
+    /* Section base */
+    .section{padding:100px 0}
+    .section-header{text-align:center;margin-bottom:60px}
+    .section-title{font-family:'Playfair Display',serif;font-weight:700;font-size:2.6rem;color:var(--dark)}
+    .section-line{width:60px;height:4px;background:var(--primary);margin:16px auto 0;border-radius:4px}
+
+    /* Navbar */
+    .navbar{background:rgba(255,255,255,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:14px 0;transition:var(--transition);box-shadow:none}
+    .navbar.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 20px rgba(0,0,0,.08);padding:10px 0}
+    .navbar-brand{font-size:1.8rem;color:var(--dark)!important;font-family:'Playfair Display',serif}
+    .navbar-brand .dot{color:var(--primary)}
+    .nav-link{color:var(--dark)!important;font-weight:500;margin-left:8px;padding:8px 16px!important;border-radius:8px;transition:var(--transition)}
+    .nav-link:hover,.nav-link.active{color:var(--primary)!important;background:rgba(37,99,235,.08)}
+
+    /* Hero */
+    .hero-section{min-height:100vh;background:linear-gradient(135deg,var(--dark) 0%,var(--dark-soft) 50%,#0f2744 100%);color:var(--white);position:relative;overflow:hidden}
+    .hero-particles{position:absolute;inset:0;pointer-events:none;z-index:0}
+    .hero-particles .particle{position:absolute;width:4px;height:4px;background:rgba(255,255,255,.15);border-radius:50%;animation:float-particle linear infinite}
+    @keyframes float-particle{0%{transform:translateY(0) scale(1);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) scale(.5);opacity:0}}
+    .hero-tag{display:inline-block;font-size:.95rem;opacity:.8;letter-spacing:.5px}
+    .hero-title{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:700;line-height:1.1;margin-bottom:8px}
+    .hero-title .highlight{color:var(--accent)}
+    .hero-subtitle{font-size:1.3rem;font-weight:400;opacity:.9}
+    .hero-desc{font-size:1.05rem;opacity:.75}
+    .hero-btns .btn-primary{background:var(--primary);border:none;border-radius:12px;padding:12px 28px;font-weight:600;transition:var(--transition)}
+    .hero-btns .btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.35)}
+    .hero-btns .btn-outline-light{border-radius:12px;padding:12px 28px;font-weight:600;transition:var(--transition)}
+    .hero-btns .btn-outline-light:hover{transform:translateY(-2px)}
+    .hero-stats{display:flex;gap:40px}
+    .stat-item{text-align:center}
+    .stat-number{display:block;font-size:2.2rem;font-weight:800;color:var(--accent);line-height:1}
+    .stat-plus{font-size:1.6rem;font-weight:700;color:var(--accent)}
+    .stat-label{font-size:.8rem;opacity:.7;display:block;margin-top:4px}
+    .hero-avatar-wrapper{position:relative}
+    .hero-avatar{width:280px;height:280px;margin:0 auto;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;box-shadow:0 0 60px rgba(14,165,233,.25);animation:pulse-ring 3s ease-in-out infinite}
+    .hero-avatar i{font-size:7rem;color:var(--white);opacity:.9}
+    @keyframes pulse-ring{0%,100%{box-shadow:0 0 60px rgba(14,165,233,.25)}50%{box-shadow:0 0 80px rgba(14,165,233,.4)}}
+
+    /* Profil & Languages */
+    .profil-text{font-size:1.15rem;color:var(--gray);line-height:1.9}
+    .lang-card{background:var(--white);border-radius:var(--radius);padding:30px 20px;box-shadow:var(--shadow);transition:var(--transition)}
+    .lang-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .lang-card h5{font-weight:700;margin-bottom:16px;color:var(--dark)}
+    .lang-card p{color:var(--gray);margin-top:10px;margin-bottom:0}
+    .progress-ring{position:relative;width:100px;height:100px;margin:0 auto}
+    .progress-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+    .progress-ring circle{fill:none;stroke-width:8;stroke-linecap:round}
+    .progress-ring .bg{stroke:#e2e8f0}
+    .progress-ring .fg{stroke:var(--primary);stroke-dasharray:326.73;stroke-dashoffset:326.73;transition:stroke-dashoffset 1.5s ease}
+    .progress-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:700;font-size:1.1rem;color:var(--dark)}
+
+    /* Skill cards */
+    .skill-card{background:var(--white);border-radius:var(--radius);padding:32px 24px;text-align:center;box-shadow:var(--shadow);border:1px solid transparent;transition:var(--transition);height:100%}
+    .skill-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--primary)}
+    .skill-icon{width:64px;height:64px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:rgba(37,99,235,.1);color:var(--primary);font-size:1.6rem;transition:var(--transition)}
+    .skill-card:hover .skill-icon{background:var(--primary);color:var(--white)}
+    .skill-card h5{font-weight:700;margin-bottom:8px}
+    .skill-card p{color:var(--gray);font-size:.92rem;margin-bottom:0}
+
+    /* Pilotage */
+    .pilotage-list{list-style:none;padding:0}
+    .pilotage-list li{padding:12px 0;font-size:1rem;color:var(--dark);border-bottom:1px solid #e2e8f0;display:flex;align-items:flex-start;gap:10px}
+    .pilotage-list li:last-child{border-bottom:none}
+    .pilotage-list i{color:var(--primary);margin-top:4px;flex-shrink:0}
+
+    /* Tool badges */
+    .tool-badge{display:inline-block;background:var(--white);border:1px solid #e2e8f0;padding:10px 20px;border-radius:50px;font-weight:500;font-size:.93rem;color:var(--dark);transition:var(--transition);white-space:nowrap}
+    .tool-badge:hover{background:var(--primary);color:var(--white);border-color:var(--primary);transform:translateY(-3px);box-shadow:0 6px 20px rgba(37,99,235,.25)}
+    .tool-badge i{color:var(--primary);transition:var(--transition)}
+    .tool-badge:hover i{color:var(--white)}
+
+    /* Timeline */
+    .timeline{position:relative;max-width:900px;margin:0 auto;padding-left:40px}
+    .timeline::before{content:'';position:absolute;left:16px;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--primary),var(--accent));border-radius:3px}
+    .timeline-item{position:relative;margin-bottom:48px}
+    .timeline-item:last-child{margin-bottom:0}
+    .timeline-dot{position:absolute;left:-32px;top:8px;width:14px;height:14px;background:var(--primary);border:3px solid var(--white);border-radius:50%;box-shadow:0 0 0 4px rgba(37,99,235,.2);z-index:1}
+    .timeline-content{background:var(--light);border-radius:var(--radius);padding:28px 32px;box-shadow:var(--shadow);border-left:4px solid var(--primary);transition:var(--transition)}
+    .timeline-content:hover{box-shadow:var(--shadow-lg);transform:translateX(6px)}
+    .timeline-date{display:inline-block;background:var(--primary);color:var(--white);padding:4px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-bottom:10px}
+    .timeline-content h4{font-weight:700;margin-bottom:2px}
+    .timeline-content .company{color:var(--accent);font-weight:600;margin-bottom:12px}
+    .timeline-content p{color:var(--gray);font-size:.95rem}
+    .timeline-content ul{padding-left:20px;margin-bottom:0}
+    .timeline-content ul li{color:var(--gray);font-size:.93rem;margin-bottom:4px}
+
+    /* Education cards */
+    .edu-card{background:var(--white);border-radius:var(--radius);padding:32px 24px;text-align:center;box-shadow:var(--shadow);transition:var(--transition);height:100%;border-top:4px solid var(--primary)}
+    .edu-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .edu-year{display:inline-block;background:rgba(37,99,235,.1);color:var(--primary);font-weight:700;padding:4px 16px;border-radius:20px;font-size:.9rem;margin-bottom:14px}
+    .edu-card h5{font-weight:700;margin-bottom:6px}
+    .edu-card p{color:var(--gray);font-size:.95rem;margin-bottom:12px}
+    .edu-school{color:var(--accent);font-weight:600;font-size:.9rem}
+
+    /* Contact */
+    #contact{background:var(--dark)}
+    .contact-card{padding:30px 20px;border-radius:var(--radius);background:var(--dark-soft);transition:var(--transition)}
+    .contact-card:hover{transform:translateY(-6px);background:rgba(37,99,235,.15)}
+    .contact-card i{font-size:2.5rem;color:var(--accent);margin-bottom:12px}
+    .contact-card h5{font-weight:600;margin-bottom:6px}
+    .contact-card p,.contact-card a{font-size:.95rem;margin-bottom:0;color:#94a3b8}
+    .contact-card a:hover{color:var(--accent)}
+
+    /* Back to top */
+    .btn-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;border:none;border-radius:50%;background:var(--primary);color:var(--white);font-size:1.5rem;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(12px);transition:var(--transition);z-index:1000;cursor:pointer}
+    .btn-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+    .btn-top:hover{background:var(--primary-dark);transform:translateY(-3px)}
+
+    /* Animations */
+    [data-animate]{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+    [data-animate="fade-right"]{transform:translateX(-40px)}
+    [data-animate="fade-left"]{transform:translateX(40px)}
+    [data-animate].animate-in{opacity:1;transform:translate(0,0)}
+
+    /* Responsive */
+    @media(max-width:992px){
+        .hero-title{font-size:3rem}
+        .hero-stats{gap:24px}
+        .stat-number{font-size:1.8rem}
+        .section{padding:70px 0}
+        .section-title{font-size:2rem}
+    }
+    @media(max-width:576px){
+        .hero-title{font-size:2.4rem}
+        .hero-subtitle{font-size:1rem}
+        .hero-btns .btn{display:block;width:100%;margin-bottom:12px}
+        .hero-btns .btn:first-child{margin-right:0!important}
+        .hero-stats{flex-wrap:wrap;gap:20px}
+        .stat-item{flex:0 0 45%}
+        .timeline{padding-left:30px}
+        .timeline::before{left:10px}
+        .timeline-dot{left:-26px}
+        .timeline-content{padding:20px}
+    }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80">
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#hero">MR<span class="dot">.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#profil">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#outils">Outils</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#formation">Formation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="hero-section d-flex align-items-center">
+        <div class="hero-particles" id="particles"></div>
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-7" data-animate="fade-right">
+                    <p class="hero-tag mb-2"><i class="bi bi-geo-alt-fill me-1"></i> Salé / Rabat, Maroc</p>
+                    <h1 class="hero-title">Meryem<br><span class="highlight">Ryad</span></h1>
+                    <h2 class="hero-subtitle">Coordinatrice Confirmée de Projet Workplace</h2>
+                    <p class="hero-desc mt-3">Coordination opérationnelle &bull; Planification &bull; Suivi &amp; Reporting</p>
+                    <div class="hero-btns mt-4">
+                        <a href="#contact" class="btn btn-primary btn-lg me-3"><i class="bi bi-envelope-fill me-2"></i>Contactez-moi</a>
+                        <a href="#experience" class="btn btn-outline-light btn-lg"><i class="bi bi-briefcase-fill me-2"></i>Mon parcours</a>
+                    </div>
+                    <div class="hero-stats mt-5">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="8">0</span><span class="stat-plus">+</span>
+                            <span class="stat-label">Ans d'expérience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="3">0</span>
+                            <span class="stat-label">Postes de Chef de projet</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="3">0</span>
+                            <span class="stat-label">Langues</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center d-none d-lg-block" data-animate="fade-left">
+                    <div class="hero-avatar-wrapper">
+                        <div class="hero-avatar">
+                            <i class="bi bi-person-workspace"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PROFIL ===================== -->
+    <section id="profil" class="section bg-white">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Profil</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-animate="fade-up">
+                    <p class="profil-text">
+                        Cheffe de projet Télécom confirmée avec plus de <strong>8 ans d'expérience</strong> en coordination opérationnelle
+                        de projets <strong>FTTH/FTTx (FO/GC)</strong>. Passionnée par la gestion de projets complexes, je mets
+                        mon expertise au service de la planification, du suivi et du reporting pour garantir
+                        le succès des déploiements.
+                    </p>
+                </div>
+            </div>
+            <!-- Languages -->
+            <div class="row mt-5 justify-content-center g-4">
+                <div class="col-md-4" data-animate="fade-up">
+                    <div class="lang-card text-center">
+                        <h5>Arabe</h5>
+                        <div class="progress-ring" data-percent="100">
+                            <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52"/></svg>
+                            <span class="progress-label">100%</span>
+                        </div>
+                        <p>Langue maternelle</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-animate="fade-up">
+                    <div class="lang-card text-center">
+                        <h5>Français</h5>
+                        <div class="progress-ring" data-percent="90">
+                            <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52"/></svg>
+                            <span class="progress-label">90%</span>
+                        </div>
+                        <p>Courant</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-animate="fade-up">
+                    <div class="lang-card text-center">
+                        <h5>Anglais</h5>
+                        <div class="progress-ring" data-percent="70">
+                            <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52"/></svg>
+                            <span class="progress-label">70%</span>
+                        </div>
+                        <p>Professionnel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== COMPÉTENCES ===================== -->
+    <section id="competences" class="section bg-light">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Compétences Clés</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-animate="fade-up">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="bi bi-diagram-3-fill"></i></div>
+                        <h5>Coordination opérationnelle</h5>
+                        <p>Prise en charge &amp; contrôle des commandes/BC, complétude &amp; cohérence.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-animate="fade-up">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="bi bi-calendar-week-fill"></i></div>
+                        <h5>Planification</h5>
+                        <p>Construction/diffusion de plannings, suivi des disponibilités et priorités.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-animate="fade-up">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                        <h5>Suivi d'avancement</h5>
+                        <p>Statuts, risques, points bloquants, RAF (reste à faire) et alerting.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-animate="fade-up">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="bi bi-truck"></i></div>
+                        <h5>Livraisons &amp; traçabilité</h5>
+                        <p>Suivi logistique, cohérence commande &ndash; livraison, archivage.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-animate="fade-up">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="bi bi-folder2-open"></i></div>
+                        <h5>Documentation</h5>
+                        <p>Collecte, référencement, recettes, fiches d'intervention, PV.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-animate="fade-up">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="bi bi-cash-stack"></i></div>
+                        <h5>Facturation</h5>
+                        <p>Attachements, décomptes, suivi des paiements &amp; échéanciers.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mx-auto" data-animate="fade-up">
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="bi bi-clipboard-data-fill"></i></div>
+                        <h5>Reporting</h5>
+                        <p>CR d'avancement, tableaux de bord, consolidation multi-sources.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PILOTAGE & REPORTING ===================== -->
+    <section id="pilotage" class="section bg-white">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Pilotage &amp; Reporting Projet</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6" data-animate="fade-up">
+                    <ul class="pilotage-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Coordination des parties prenantes et remontée des alertes projet</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Mise à jour des tableaux de bord projet et suivi des risques</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Production de reportings opérationnels et comptes rendus de réunions</li>
+                    </ul>
+                </div>
+                <div class="col-md-6" data-animate="fade-up">
+                    <ul class="pilotage-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Suivi des indicateurs de performance (KPI)</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Consolidation des données d'avancement</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Suivi des points bloquants et plans d'action</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== OUTILS ===================== -->
+    <section id="outils" class="section bg-light">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Outils &amp; Environnement</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="row g-3 justify-content-center">
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-bar-chart-steps me-1"></i>MS Project / Gantt / WBS</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-file-earmark-spreadsheet me-1"></i>Excel avancé</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-microsoft-teams me-1"></i>Microsoft Teams</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-folder-symlink me-1"></i>SharePoint</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-ticket-detailed me-1"></i>Outils de ticketing</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-kanban me-1"></i>Jira</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-gear-wide-connected me-1"></i>ServiceNow</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-diagram-2 me-1"></i>Planisware</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-arrow-repeat me-1"></i>Agile Scrum</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-database me-1"></i>SQL / MySQL</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-bezier2 me-1"></i>UML</span></div>
+                <div class="col-auto" data-animate="fade-up"><span class="tool-badge"><i class="bi bi-git me-1"></i>Git</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== EXPÉRIENCE ===================== -->
+    <section id="experience" class="section bg-white">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Expérience Professionnelle</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="timeline">
+                <!-- EXP 1 -->
+                <div class="timeline-item" data-animate="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2023 – Présent</span>
+                        <h4>Cheffe de projet IAM</h4>
+                        <h6 class="company">Neweracom</h6>
+                        <p class="mb-2">Définition des objectifs, contrôle et suivi du respect des délais. Gestion des contrats clients et sous-traitants ; suivi de la production et des livraisons.</p>
+                        <ul>
+                            <li>Coordination des équipes projet et suivi des prestations terrain.</li>
+                            <li>Suivi des contrats clients et fournisseurs et validation des livrables.</li>
+                            <li>Gestion des réceptions provisoires et définitives des travaux.</li>
+                            <li>Suivi administratif et financier des projets (facturation et validation des paiements).</li>
+                            <li>Consolidation des informations nécessaires au pilotage projet.</li>
+                            <li>Collecte, gestion et archivage de la documentation projet.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- EXP 2 -->
+                <div class="timeline-item" data-animate="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021 – 2022</span>
+                        <h4>Cheffe de projet</h4>
+                        <h6 class="company">MTC</h6>
+                        <p class="mb-2">Planification et élaboration des stratégies de déploiement ; coordination des acteurs internes. Animation des réunions d'avancement avec le client.</p>
+                        <ul>
+                            <li>Planification des interventions et suivi de l'avancement des prestations.</li>
+                            <li>Coordination des équipes de déploiement et des sous-traitants.</li>
+                            <li>Suivi logistique des équipements et gestion des stocks.</li>
+                            <li>Organisation et animation des réunions d'avancement.</li>
+                            <li>Production des reportings projet et suivi des KPI.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- EXP 3 -->
+                <div class="timeline-item" data-animate="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2015 – 2020</span>
+                        <h4>Coordinatrice de projets</h4>
+                        <h6 class="company">Noukatel (Maroc Telecom)</h6>
+                        <p class="mb-2">Préparation des devis et suivi des bons de commandes. Planification/coordination des actions et affectation aux sous-traitants. Interface client : reporting, relation fournisseurs.</p>
+                        <ul>
+                            <li>Vérification et suivi des Bons de Commande clients et fournisseurs.</li>
+                            <li>Planification des prestations et coordination des équipes terrain.</li>
+                            <li>Gestion administrative et financière : attachements, décomptes et facturation.</li>
+                            <li>Consolidation des reportings projet (avancement, KPI, risques, RAF).</li>
+                            <li>Collecte et archivage de la documentation projet.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- EXP 4 -->
+                <div class="timeline-item" data-animate="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2014 – 2015</span>
+                        <h4>Assistante commerciale</h4>
+                        <h6 class="company">EcoRéseau</h6>
+                        <p>Gestion de la relation client, étude des besoins, prospection. Réalisation de l'attachement et de la facturation en temps réel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FORMATION ===================== -->
+    <section id="formation" class="section bg-light">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title">Formation</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4" data-animate="fade-up">
+                    <div class="edu-card">
+                        <div class="edu-year">2018–2020</div>
+                        <h5>Master spécialisé</h5>
+                        <p>Internet des Objets &amp; Services Mobiles</p>
+                        <span class="edu-school"><i class="bi bi-building me-1"></i>ENSIAS Rabat</span>
+                    </div>
+                </div>
+                <div class="col-md-4" data-animate="fade-up">
+                    <div class="edu-card">
+                        <div class="edu-year">2017–2018</div>
+                        <h5>Licence professionnelle</h5>
+                        <p>Ingénierie des Applications Mobiles</p>
+                        <span class="edu-school"><i class="bi bi-building me-1"></i>EST Salé</span>
+                    </div>
+                </div>
+                <div class="col-md-4" data-animate="fade-up">
+                    <div class="edu-card">
+                        <div class="edu-year">2006–2008</div>
+                        <h5>Technicien spécialisé</h5>
+                        <p>Développement Informatique</p>
+                        <span class="edu-school"><i class="bi bi-building me-1"></i>ISTA Hay Salam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="section bg-dark text-white">
+        <div class="container">
+            <div class="section-header" data-animate="fade-up">
+                <h2 class="section-title text-white">Contact</h2>
+                <div class="section-line bg-white"></div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 text-center" data-animate="fade-up">
+                    <div class="contact-card">
+                        <i class="bi bi-telephone-fill"></i>
+                        <h5>Téléphone</h5>
+                        <p>06 63 63 64 27</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center" data-animate="fade-up">
+                    <div class="contact-card">
+                        <i class="bi bi-envelope-fill"></i>
+                        <h5>Email</h5>
+                        <p>maryam.ryad@gmail.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center" data-animate="fade-up">
+                    <div class="contact-card">
+                        <i class="bi bi-linkedin"></i>
+                        <h5>LinkedIn</h5>
+                        <a href="https://www.linkedin.com/in/meryem-ryad/" target="_blank" rel="noopener noreferrer" class="text-info">/in/meryem-ryad/</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="py-4 text-center bg-black text-secondary">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Meryem Ryad &mdash; Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="backToTop" class="btn-top" aria-label="Retour en haut"><i class="bi bi-arrow-up-short"></i></button>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ===================== ALL JAVASCRIPT ===================== -->
+    <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+        const navbar=document.getElementById('mainNav');
+        const backToTop=document.getElementById('backToTop');
+
+        /* Navbar scroll */
+        window.addEventListener('scroll',()=>{
+            const y=window.scrollY;
+            navbar.classList.toggle('scrolled',y>50);
+            backToTop.classList.toggle('visible',y>500);
+        });
+
+        /* Smooth scroll */
+        document.querySelectorAll('a[href^="#"]').forEach(link=>{
+            link.addEventListener('click',e=>{
+                const target=document.querySelector(link.getAttribute('href'));
+                if(target){
+                    e.preventDefault();
+                    target.scrollIntoView({behavior:'smooth'});
+                    const nav=document.getElementById('navContent');
+                    if(nav.classList.contains('show'))bootstrap.Collapse.getOrCreateInstance(nav).hide();
+                }
+            });
+        });
+
+        /* Back to top */
+        backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+        /* Scroll animations */
+        const observer=new IntersectionObserver(entries=>{
+            entries.forEach((entry,i)=>{
+                if(entry.isIntersecting){
+                    setTimeout(()=>entry.target.classList.add('animate-in'),i*80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        },{threshold:.15});
+        document.querySelectorAll('[data-animate]').forEach(el=>observer.observe(el));
+
+        /* Counter animation */
+        const counters=document.querySelectorAll('.stat-number');
+        let started=false;
+        const cObs=new IntersectionObserver(entries=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting&&!started){
+                    started=true;
+                    counters.forEach(c=>{
+                        const target=parseInt(c.dataset.count,10);
+                        let cur=0;const step=Math.ceil(target/50);
+                        const t=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(t)}c.textContent=cur},30);
+                    });
+                }
+            });
+        },{threshold:.5});
+        if(counters.length)cObs.observe(counters[0]);
+
+        /* Progress rings */
+        const circ=2*Math.PI*52;
+        const rObs=new IntersectionObserver(entries=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    const pct=parseInt(entry.target.dataset.percent,10);
+                    entry.target.querySelector('.fg').style.strokeDashoffset=circ-(circ*pct/100);
+                    rObs.unobserve(entry.target);
+                }
+            });
+        },{threshold:.5});
+        document.querySelectorAll('.progress-ring').forEach(r=>rObs.observe(r));
+
+        /* Particles */
+        const pc=document.getElementById('particles');
+        if(pc){for(let i=0;i<30;i++){
+            const p=document.createElement('div');p.classList.add('particle');
+            p.style.left=Math.random()*100+'%';p.style.top=(60+Math.random()*40)+'%';
+            const s=(2+Math.random()*4)+'px';p.style.width=s;p.style.height=s;
+            p.style.animationDuration=(6+Math.random()*10)+'s';p.style.animationDelay=(Math.random()*8)+'s';
+            pc.appendChild(p);
+        }}
+
+        /* Active nav on scroll */
+        const sections=document.querySelectorAll('section[id]');
+        window.addEventListener('scroll',()=>{
+            const y=window.scrollY+120;
+            sections.forEach(s=>{
+                const link=document.querySelector('.nav-link[href="#'+s.id+'"]');
+                if(link){
+                    if(y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight){
+                        document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
