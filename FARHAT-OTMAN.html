@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Otman Farhat — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #003049;
+      --text: #ffffff;
+      --accent: #e36414;
+      --accent-dim: rgba(227,100,20,0.15);
+      --accent-glow: rgba(227,100,20,0.4);
+      --glass: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Abel', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CUSTOM CURSOR */
+    .cursor {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      pointer-events: none;
+    }
+    .cursor-dot {
+      width: 8px; height: 8px; background: var(--accent);
+      border-radius: 50%;
+      position: absolute; transform: translate(-50%, -50%);
+      transition: transform 0.1s;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--accent);
+      border-radius: 50%;
+      position: absolute; transform: translate(-50%, -50%);
+      transition: all 0.18s ease;
+      opacity: 0.5;
+    }
+    body:has(a:hover) .cursor-ring,
+    body:has(button:hover) .cursor-ring {
+      transform: translate(-50%, -50%) scale(1.6);
+      opacity: 1;
+      background: var(--accent-dim);
+    }
+
+    /* NOISE OVERLAY */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(0,30,45,0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+    nav.scrolled { padding: 0.9rem 4rem; }
+    .nav-logo {
+      font-size: 1.35rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.65); text-decoration: none;
+      font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase;
+      position: relative; transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 1px; background: var(--accent);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* SECTIONS */
+    section { position: relative; z-index: 1; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 4rem;
+      padding-top: 80px;
+      overflow: hidden;
+      gap: 2rem;
+    }
+    .hero-bg-lines {
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
+    }
+    .hero-bg-lines span {
+      position: absolute; left: 50%; top: 0;
+      width: 1px; height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--accent-glow), transparent);
+      opacity: 0.3;
+      animation: lineFloat 6s ease-in-out infinite;
+    }
+    .hero-bg-lines span:nth-child(1) { left: 20%; animation-delay: 0s; }
+    .hero-bg-lines span:nth-child(2) { left: 40%; animation-delay: 1s; }
+    .hero-bg-lines span:nth-child(3) { left: 60%; animation-delay: 2s; }
+    .hero-bg-lines span:nth-child(4) { left: 80%; animation-delay: 0.5s; }
+    @keyframes lineFloat {
+      0%,100% { opacity: 0.2; transform: scaleY(1); }
+      50% { opacity: 0.5; transform: scaleY(1.05); }
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.8rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--accent); border: 1px solid var(--accent);
+      padding: 0.3rem 0.9rem; margin-bottom: 1.6rem;
+      animation: fadeSlideUp 0.7s ease both;
+    }
+    .hero-name {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      animation: fadeSlideUp 0.7s 0.15s ease both;
+    }
+    .hero-name em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-tagline {
+      font-size: 1.25rem; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2.2rem;
+      animation: fadeSlideUp 0.7s 0.3s ease both;
+    }
+    .hero-tagline strong { color: var(--text); font-style: normal; font-weight: 400; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      background: var(--accent); color: var(--text);
+      padding: 0.9rem 2.2rem; font-family: 'Abel', sans-serif;
+      font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border: none; cursor: none;
+      position: relative; overflow: hidden;
+      transition: box-shadow 0.3s;
+      animation: fadeSlideUp 0.7s 0.45s ease both;
+    }
+    .hero-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,0.1);
+      transform: translateX(-110%) skewX(-20deg);
+      transition: transform 0.5s ease;
+    }
+    .hero-cta:hover::before { transform: translateX(110%) skewX(-20deg); }
+    .hero-cta:hover { box-shadow: 0 0 32px var(--accent-glow); }
+
+    /* HERO PHOTO SIDE */
+    .hero-photo-side {
+      position: relative; z-index: 2;
+      display: flex; justify-content: center; align-items: center;
+      animation: fadeSlideUp 0.9s 0.2s ease both;
+    }
+    .photo-frame {
+      position: relative; width: 340px; height: 400px;
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute; top: -16px; right: -16px;
+      width: 100%; height: 100%;
+      border: 2px solid var(--accent); z-index: 0;
+      opacity: 0.5;
+    }
+    .photo-frame::after {
+      content: '';
+      position: absolute; bottom: -16px; left: -16px;
+      width: 60%; height: 60%;
+      border: 1px solid rgba(255,255,255,0.1);
+      z-index: 0;
+    }
+    .photo-frame img {
+      position: relative; z-index: 1;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top;
+      filter: grayscale(20%) contrast(1.05);
+    }
+    .photo-accent-dot {
+      position: absolute; bottom: -28px; right: 20px; z-index: 2;
+      width: 60px; height: 60px; background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-align: center; line-height: 1.3;
+    }
+
+    /* SCROLL INDICATOR */
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); z-index: 2;
+    }
+    .scroll-line {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { transform: scaleY(1); opacity: 0.5; }
+      50% { transform: scaleY(1.2); opacity: 1; }
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 8rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .section-label {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.1; letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .section-title em { color: var(--accent); font-style: normal; }
+    .about-text {
+      font-size: 1.15rem; line-height: 1.8;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1.5rem;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .stat {
+      border-top: 1px solid var(--accent);
+      padding-top: 1rem;
+    }
+    .stat-num {
+      font-size: 2.4rem; color: var(--accent); letter-spacing: 0.02em;
+    }
+    .stat-label {
+      font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-top: 0.2rem;
+    }
+    .about-contact {
+      margin-top: 2rem;
+      display: flex; flex-direction: column; gap: 0.7rem;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 1rem; color: rgba(255,255,255,0.6);
+    }
+    .contact-item .icon {
+      width: 32px; height: 32px; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 0.9rem; flex-shrink: 0;
+    }
+
+    /* ── SKILLS ── */
+    #skills {
+      padding: 8rem 4rem;
+      background: rgba(0,0,0,0.15);
+      position: relative;
+    }
+    .skills-header { text-align: center; margin-bottom: 4rem; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .skill-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 2.5rem 2rem;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .skill-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .skill-card:hover { 
+      transform: translateY(-6px);
+      border-color: rgba(227,100,20,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .skill-card:hover::before { transform: scaleX(1); }
+    .skill-icon {
+      width: 52px; height: 52px;
+      background: var(--accent-dim); border: 1px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.5rem;
+    }
+    .skill-name {
+      font-size: 1.4rem; letter-spacing: 0.05em;
+      margin-bottom: 0.8rem;
+    }
+    .skill-desc {
+      font-size: 1rem; line-height: 1.7;
+      color: rgba(255,255,255,0.55);
+    }
+    .skill-tags {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.3rem;
+    }
+    .skill-tag {
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      border: 1px solid rgba(227,100,20,0.3);
+      color: var(--accent); padding: 0.2rem 0.6rem;
+    }
+
+    /* ── EXPERTISE ── */
+    #expertise {
+      padding: 8rem 4rem;
+    }
+    .expertise-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; margin-top: 4rem;
+    }
+    .expertise-block {
+      background: var(--glass); border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative;
+    }
+    .expertise-block .num {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      font-size: 4rem; color: rgba(227,100,20,0.07);
+      line-height: 1; letter-spacing: -0.04em;
+    }
+    .expertise-block h3 {
+      font-size: 1.5rem; letter-spacing: 0.04em;
+      margin-bottom: 1rem; color: var(--accent);
+    }
+    .expertise-block p {
+      font-size: 1.05rem; line-height: 1.75;
+      color: rgba(255,255,255,0.6);
+    }
+    .expertise-list {
+      margin-top: 1rem; list-style: none;
+    }
+    .expertise-list li {
+      font-size: 0.95rem; color: rgba(255,255,255,0.55);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .expertise-list li::before {
+      content: '▸'; color: var(--accent); font-size: 0.7rem;
+    }
+
+    /* ── TOOLS / STACK ── */
+    #stack {
+      padding: 7rem 4rem;
+      background: rgba(0,0,0,0.15);
+    }
+    .stack-header { text-align: center; margin-bottom: 3.5rem; }
+    .tools-grid {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 1rem; max-width: 900px; margin: 0 auto;
+    }
+    .tool-pill {
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.4rem;
+      font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .tool-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 8rem 4rem;
+      text-align: center;
+      position: relative;
+    }
+    .contact-glow {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(227,100,20,0.07), transparent 70%);
+      pointer-events: none;
+    }
+    .contact-inner { position: relative; z-index: 1; }
+    .contact-email {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      color: var(--text); letter-spacing: 0.06em;
+      margin: 2rem 0;
+      text-decoration: none;
+      position: relative; display: inline-block;
+    }
+    .contact-email::after {
+      content: '';
+      position: absolute; bottom: -6px; left: 0;
+      width: 0; height: 2px; background: var(--accent);
+      transition: width 0.4s;
+    }
+    .contact-email:hover::after { width: 100%; }
+    .contact-sub {
+      color: rgba(255,255,255,0.4);
+      font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.82rem; letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.25);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* ANIMATIONS */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.8rem; }
+      #hero { grid-template-columns: 1fr; padding: 6rem 2rem 4rem; text-align: center; }
+      .hero-photo-side { order: -1; }
+      #about { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
+      #skills { padding: 5rem 2rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      #expertise { padding: 5rem 2rem; }
+      .expertise-wrap { grid-template-columns: 1fr; }
+      #stack { padding: 5rem 2rem; }
+      #contact { padding: 5rem 2rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem 2rem; }
+      .about-stats { grid-template-columns: repeat(3,1fr); }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor">
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Otman <span>Farhat</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-lines">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Digital Creative · Rabat, Morocco</div>
+    <h1 class="hero-name">
+      Otman<br><em>Farhat</em>
+    </h1>
+    <p class="hero-tagline">
+      <strong>SEO · UI/UX Design · Video Editing</strong><br>
+      Driving growth through design, data &amp; AI.
+    </p>
+    <a href="#contact" class="hero-cta">
+      Get In Touch
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="hero-photo-side">
+    <div class="photo-frame">
+      <img src="https://lh3.googleusercontent.com/d/1ZhH3T-e0AzTZ4gBPJqU8l5WyHxv9NXNL" 
+           alt="Otman Farhat"
+           onerror="this.style.background='linear-gradient(135deg,#003049,#001f30)';this.style.display='block'"/>
+      <div class="photo-accent-dot">26<br>yrs</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left reveal">
+    <div class="section-label">Who I Am</div>
+    <h2 class="section-title">Creative <em>Strategist</em><br>& Digital Expert</h2>
+    <p class="about-text">
+      I'm Otman Farhat, a 26-year-old digital creative based in Salé, Rabat — combining aesthetic precision with data-driven strategy. I build experiences that don't just look good — they convert, rank, and resonate.
+    </p>
+    <p class="about-text">
+      From crafting compelling visual identities to engineering search-optimized content ecosystems, I bridge the gap between creativity and performance. Currently leveraging AI tools to power the next generation of vibes-first digital marketing.
+    </p>
+    <div class="about-contact">
+      <div class="contact-item">
+        <div class="icon">📍</div>
+        Salé, Rabat-Salé-Kénitra, Morocco
+      </div>
+      <div class="contact-item">
+        <div class="icon">✉</div>
+        otmanfarhat697@gmail.com
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right reveal reveal-delay-2">
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Core Skills</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">AI</div>
+        <div class="stat-label">Powered Work</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Curiosity</div>
+      </div>
+    </div>
+
+    <!-- Decorative skills visual -->
+    <div style="margin-top: 2.5rem; border: 1px solid var(--border); padding: 2rem;">
+      <div style="font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1.2rem;">Proficiency Overview</div>
+      <div id="bars"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-header reveal">
+    <div class="section-label">What I Do</div>
+    <h2 class="section-title">Core <em>Skills</em></h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal reveal-delay-1">
+      <div class="skill-icon">🔍</div>
+      <div class="skill-name">SEO</div>
+      <p class="skill-desc">Technical and content SEO strategies that move the needle — from site architecture and Core Web Vitals to keyword mapping and SERP domination.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">On-Page</span>
+        <span class="skill-tag">Technical</span>
+        <span class="skill-tag">Link Building</span>
+        <span class="skill-tag">Analytics</span>
+      </div>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-name">UI/UX Design</div>
+      <p class="skill-desc">Human-centered design that converts. I craft interfaces and user journeys that feel inevitable — intuitive, beautiful, and purposeful from the first pixel.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Wireframing</span>
+        <span class="skill-tag">Prototyping</span>
+        <span class="skill-tag">Brand Identity</span>
+      </div>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <div class="skill-icon">🎬</div>
+      <div class="skill-name">Video Editing</div>
+      <p class="skill-desc">Storytelling through motion — from social-first reels and branded content to cinematic cuts that hold attention and build brand authority.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Premiere Pro</span>
+        <span class="skill-tag">After Effects</span>
+        <span class="skill-tag">Color Grading</span>
+        <span class="skill-tag">Reels & Shorts</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="reveal">
+    <div class="section-label">Deep Expertise</div>
+    <h2 class="section-title">Beyond the <em>Surface</em></h2>
+  </div>
+  <div class="expertise-wrap">
+    <div class="expertise-block reveal reveal-delay-1">
+      <span class="num">01</span>
+      <h3>Search Market Mastery</h3>
+      <p>Understanding how people search — and how algorithms decide who wins. I study the search landscape holistically: intent patterns, competitor gaps, emerging trends, and the psychology behind queries.</p>
+      <ul class="expertise-list">
+        <li>SERP Feature Targeting (featured snippets, PAA, local pack)</li>
+        <li>Competitive search gap analysis</li>
+        <li>Search intent mapping &amp; content architecture</li>
+        <li>Google Search Console deep audits</li>
+        <li>Zero-click &amp; brand visibility strategies</li>
+      </ul>
+    </div>
+    <div class="expertise-block reveal reveal-delay-2">
+      <span class="num">02</span>
+      <h3>AI-Powered Vibes Marketing</h3>
+      <p>Marketing in the AI era isn't just automation — it's about crafting the right energy, the right vibe, at the right moment. I use AI tools to produce content that resonates on a cultural and emotional level.</p>
+      <ul class="expertise-list">
+        <li>AI-assisted content creation &amp; ideation</li>
+        <li>Prompt engineering for brand tone</li>
+        <li>Trend analysis with AI tools</li>
+        <li>Audience psychographics via AI insights</li>
+        <li>Automated campaign personalization</li>
+      </ul>
+    </div>
+    <div class="expertise-block reveal reveal-delay-3">
+      <span class="num">03</span>
+      <h3>Vibes Coding</h3>
+      <p>The new frontier: using AI coding assistants and low-code tools to ship interfaces, prototypes, and MVPs rapidly — without sacrificing design quality or intentionality.</p>
+      <ul class="expertise-list">
+        <li>AI-assisted front-end development</li>
+        <li>Rapid prototyping with Cursor / v0 / Claude</li>
+        <li>No-code &amp; low-code tool integration</li>
+        <li>Design-to-code pipelines</li>
+        <li>Component systems &amp; landing page builds</li>
+      </ul>
+    </div>
+    <div class="expertise-block reveal reveal-delay-4">
+      <span class="num">04</span>
+      <h3>Brand Strategy</h3>
+      <p>Names, marks, voices, and stories — I help brands find their identity from the ground up, ensuring every touchpoint speaks with coherence and conviction.</p>
+      <ul class="expertise-list">
+        <li>Brand naming &amp; positioning</li>
+        <li>Visual identity systems</li>
+        <li>Tone-of-voice guidelines</li>
+        <li>Competitive landscape analysis</li>
+        <li>Multi-market localization strategy</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="stack-header reveal">
+    <div class="section-label">Tools & Tech</div>
+    <h2 class="section-title">My <em>Stack</em></h2>
+  </div>
+  <div class="tools-grid reveal reveal-delay-1">
+    <div class="tool-pill">Figma</div>
+    <div class="tool-pill">Adobe Premiere</div>
+    <div class="tool-pill">After Effects</div>
+    <div class="tool-pill">Google Search Console</div>
+    <div class="tool-pill">SEMrush</div>
+    <div class="tool-pill">Ahrefs</div>
+    <div class="tool-pill">ChatGPT</div>
+    <div class="tool-pill">Claude AI</div>
+    <div class="tool-pill">Midjourney</div>
+    <div class="tool-pill">Cursor</div>
+    <div class="tool-pill">Notion</div>
+    <div class="tool-pill">Webflow</div>
+    <div class="tool-pill">Canva</div>
+    <div class="tool-pill">Meta Ads</div>
+    <div class="tool-pill">Google Analytics</div>
+    <div class="tool-pill">CapCut</div>
+    <div class="tool-pill">n8n</div>
+    <div class="tool-pill">Framer</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-glow"></div>
+  <div class="contact-inner">
+    <div class="section-label reveal">Let's Work Together</div>
+    <h2 class="section-title reveal reveal-delay-1" style="font-size:clamp(2rem,4vw,3.5rem);">Have a project in mind?<br>Let's <em>make it happen.</em></h2>
+    <p class="contact-sub reveal reveal-delay-2">Reach me directly</p>
+    <a href="mailto:otmanfarhat697@gmail.com" class="contact-email reveal reveal-delay-3">
+      otmanfarhat697@gmail.com
+    </a>
+    <p style="color:rgba(255,255,255,0.25);font-size:0.85rem;letter-spacing:0.1em;margin-top:0.5rem;" class="reveal reveal-delay-4">
+      SALÉ · RABAT · MOROCCO
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Otman Farhat. All rights reserved.</span>
+  <span>SEO · UI/UX · Video · <a href="mailto:otmanfarhat697@gmail.com">otmanfarhat697@gmail.com</a></span>
+</footer>
+
+<script>
+  // Cursor
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function animateCursor() {
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => obs.observe(r));
+
+  // Skill bars
+  const skills = [
+    { name: 'SEO & Search Market', pct: 92 },
+    { name: 'UI/UX Design', pct: 88 },
+    { name: 'Video Editing', pct: 85 },
+    { name: 'AI Tools & Automation', pct: 90 },
+    { name: 'Brand Strategy', pct: 87 },
+  ];
+  const barsEl = document.getElementById('bars');
+  skills.forEach(s => {
+    const row = document.createElement('div');
+    row.style.cssText = 'margin-bottom:1rem;';
+    row.innerHTML = `
+      <div style="display:flex;justify-content:space-between;font-size:0.85rem;letter-spacing:0.08em;margin-bottom:0.35rem;">
+        <span style="color:rgba(255,255,255,0.7)">${s.name}</span>
+        <span style="color:var(--accent)">${s.pct}%</span>
+      </div>
+      <div style="height:3px;background:rgba(255,255,255,0.06);overflow:hidden;">
+        <div class="bar-fill" data-pct="${s.pct}" style="height:100%;width:0%;background:var(--accent);transition:width 1.2s cubic-bezier(0.4,0,0.2,1);"></div>
+      </div>`;
+    barsEl.appendChild(row);
+  });
+  // Animate bars on scroll
+  const aboutObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        document.querySelectorAll('.bar-fill').forEach(b => {
+          b.style.width = b.dataset.pct + '%';
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  const aboutSection = document.getElementById('about');
+  if(aboutSection) aboutObs.observe(aboutSection);
+</script>
+
+</body>
+</html>
