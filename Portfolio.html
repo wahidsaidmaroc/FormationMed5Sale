@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Mohammed Battach - Full Stack Developer</title>
+    <style>
+        /* Styles de base et Reset */
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f4f7f6; 
+            color: #333; 
+            line-height: 1.6; 
+        }
+        
+        /* En-tête (Hero Section) */
+        header { 
+            background: linear-gradient(135deg, #2c3e50, #3498db); 
+            color: #fff; 
+            padding: 4rem 1rem; 
+            text-align: center; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 { margin: 0; font-size: 3rem; font-weight: 700; letter-spacing: 1px; }
+        header h2 { font-size: 1.5rem; margin-top: 0.5rem; color: #ecf0f1; font-weight: 400; }
+        header p.tagline { margin-top: 1rem; font-size: 1.1rem; color: #1abc9c; font-weight: 600; }
+        
+        /* Conteneur principal */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Sections */
+        section { 
+            padding: 2.5rem 2.5rem; 
+            margin: 2rem 0; 
+            background: #fff; 
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+        section:hover { transform: translateY(-2px); }
+        
+        h3.section-title { 
+            border-bottom: 3px solid #1abc9c; 
+            padding-bottom: 0.5rem; 
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.8rem;
+            display: inline-block;
+        }
+        
+        /* Grille des Compétences */
+        .skills-category { margin-bottom: 1.5rem; }
+        .skills-category h4 { margin-bottom: 0.5rem; color: #34495e; }
+        .skills-list { 
+            list-style: none; 
+            padding: 0; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 12px; 
+        }
+        .skills-list li { 
+            background: #e8f4f8; 
+            color: #2980b9;
+            padding: 0.6rem 1.2rem; 
+            border-radius: 25px; 
+            font-weight: 600; 
+            font-size: 0.95rem;
+            border: 1px solid #d4e6f1;
+        }
+        
+        /* Timeline Expériences */
+        .timeline { position: relative; padding-left: 2rem; border-left: 3px solid #1abc9c; margin-top: 1.5rem; }
+        .experience-item { margin-bottom: 2rem; position: relative; }
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -2.65rem;
+            top: 0.2rem;
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border: 3px solid #1abc9c;
+            border-radius: 50%;
+        }
+        .experience-item h4 { margin: 0 0 0.2rem 0; color: #2c3e50; font-size: 1.2rem; }
+        .experience-subtitle { font-weight: 600; color: #34495e; margin: 0; }
+        .experience-date { font-style: italic; color: #7f8c8d; font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
+        .experience-item p { margin-top: 0.5rem; color: #555; }
+        
+        /* Contact & Pied de page */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .contact-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        .contact-card a { color: #2980b9; text-decoration: none; font-weight: bold; }
+        .contact-card a:hover { text-decoration: underline; color: #1abc9c; }
+        
+        footer { 
+            background: #2c3e50; 
+            color: #bdc3c7; 
+            text-align: center; 
+            padding: 2rem 0; 
+            margin-top: 4rem; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Mohammed Battach</h1>
+        <h2>Technicien Spécialisé en Développement Digital</h2>
+        <p class="tagline">Développeur Web Full Stack & Esprit Entrepreneurial</p>
+    </header>
+
+    <div class="container">
+        <section id="a-propos">
+            <h3 class="section-title">À propos de moi</h3>
+            <p>Technicien spécialisé en développement digital (Full Stack), je suis passionné par la création de solutions web robustes et performantes. Mon profil allie une solide expertise technique à un esprit orienté business et indépendance financière. Toujours en veille technologique, je m'intéresse également aux modèles de revenus en ligne (e-commerce, Print on Demand, CPA, crypto), ce qui me donne une vision globale des enjeux numériques d'aujourd'hui, du code jusqu'à la conversion.</p>
+        </section>
+
+        <section id="competences">
+            <h3 class="section-title">Expertise & Compétences</h3>
+            
+            <div class="skills-category">
+                <h4>Développement Full Stack</h4>
+                <ul class="skills-list">
+                    <li>HTML5 / CSS3</li>
+                    <li>JavaScript</li>
+                    <li>PHP / Laravel</li>
+                    <li>React / Vue.js</li>
+                    <li>Bases de données (SQL)</li>
+                    <li>Git / GitHub</li>
+                </ul>
+            </div>
+
+            <div class="skills-category">
+                <h4>Business & Transversales</h4>
+                <ul class="skills-list">
+                    <li>E-commerce & POD</li>
+                    <li>CPA Marketing</li>
+                    <li>Gestion de projet</li>
+                    <li>Service Client</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h3 class="section-title">Parcours Professionnel & Formation</h3>
+            
+            <div class="timeline">
+                
+                <div class="experience-item">
+                    <h4>Agent de Gaming</h4>
+                    <p class="experience-subtitle">WiGame (Club Wifaq) - Rabat</p>
+                    <span class="experience-date">Actuellement</span>
+                    <p>Gestion de l'espace gaming, accompagnement technique des clients, et maintien d'un environnement technologique performant au sein du club.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Formation en Développement Digital</h4>
+                    <p class="experience-subtitle">Institut de Développement (IDS)</p>
+                    <span class="experience-date">Depuis Octobre 2025</span>
+                    <p>Cursus intensif alternant mois d'études théoriques et mois de stages pratiques pour maîtriser les architectures Full Stack.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Stagiaire en Développement Web</h4>
+                    <p class="experience-subtitle">Capital Innov</p>
+                    <span class="experience-date">Décembre 2025</span>
+                    <p>Participation au cycle de développement de projets web, intégration de maquettes, et optimisation du code back-end et front-end.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h4>Bénévole</h4>
+                    <p class="experience-subtitle">Coupe du Monde U-17 de la FIFA - Maroc</p>
+                    <span class="experience-date">2025</span>
+                    <p>Participation à l'organisation et à la logistique d'un événement sportif d'envergure internationale, démontrant un fort esprit d'équipe et d'adaptabilité.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <h3 class="section-title">Me Contacter</h3>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <p>📍 <strong>Localisation</strong></p>
+                    <p>Quartier Abi Raqraq<br>Rabat, Maroc</p>
+                </div>
+                <div class="contact-card">
+                    <p>✉️ <strong>Email</strong></p>
+                    <p><a href="mailto:ton-email@gmail.com">Me contacter par mail</a></p>
+                </div>
+                <div class="contact-card">
+                    <p>🔗 <strong>Réseaux</strong></p>
+                    <p><a href="https://github.com/ton-pseudo" target="_blank">GitHub</a><br>
+                    <a href="https://linkedin.com/in/ton-profil" target="_blank">LinkedIn</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mohammed Battach. Code conçu avec passion.</p>
+    </footer>
+
+</body>
+</html>
