@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio professionnel de MAROUB TAOUFIQ - Étudiant en Infrastructures Digitales & Intelligence Artificielle. Spécialisé en networking, cybersécurité et IA.">
+    <meta name="author" content="MAROUB TAOUFIQ">
+    <meta name="theme-color" content="#0a0e27">
+    <meta property="og:title" content="MAROUB TAOUFIQ - Portfolio">
+    <meta property="og:description" content="Portfolio professionnel - Infrastructures Digitales & Intelligence Artificielle">
+    <meta property="og:type" content="website">
+    <title>MAROUB TAOUFIQ - Portfolio | Infrastructures Digitales & IA</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ============================================
+           GLOBAL STYLES & VARIABLES
+           ============================================ */
+        :root {
+            --color-primary: #00d9ff;
+            --color-secondary: #00ff88;
+            --color-accent: #9945ff;
+            --color-accent-2: #ff006e;
+            --color-dark: #0a0e27;
+            --color-darker: #050812;
+            --color-card: #1a1f3a;
+            --color-text: #e0e0ff;
+            --color-text-muted: #a8afc9;
+            --color-border: #2a2f4a;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --shadow-sm: 0 4px 15px rgba(0, 217, 255, 0.1);
+            --shadow-md: 0 8px 30px rgba(0, 217, 255, 0.15);
+            --shadow-lg: 0 15px 40px rgba(153, 69, 255, 0.2);
+            --transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-dark) 50%, #1a0033 100%);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(153, 69, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ============================================
+           PARTICLES BACKGROUND
+           ============================================ */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        /* ============================================
+           LAYOUT WRAPPER
+           ============================================ */
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============================================
+           NAVIGATION BAR
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+            z-index: 999;
+            padding: 0 20px;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(10, 14, 39, 0.95);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .nav-logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95em;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-primary);
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 20px;
+                background: rgba(10, 14, 39, 0.98);
+                padding: 30px 20px;
+                border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-links.active {
+                max-height: 500px;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-subtitle {
+            color: var(--color-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5em, 8vw, 5em);
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .hero-tagline {
+            font-size: 1.3em;
+            color: var(--color-text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .hero-info {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95em;
+            color: var(--color-text-muted);
+        }
+
+        .info-item i {
+            color: var(--color-primary);
+            font-size: 1.2em;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-dark);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           SECTIONS STYLING
+           ============================================ */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2em, 5vw, 3em);
+            font-weight: 800;
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ============================================
+           GLASS-MORPHISM CARDS
+           ============================================ */
+        .card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+            z-index: 1;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            border-color: rgba(0, 217, 255, 0.4);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+
+        .card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ============================================
+           PROFILE SECTION
+           ============================================ */
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .profile-image {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .profile-image-wrapper {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.4), rgba(153, 69, 255, 0.4));
+            padding: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: conic-gradient(
+                from 0deg,
+                var(--color-primary),
+                var(--color-secondary),
+                var(--color-accent),
+                var(--color-primary)
+            );
+            animation: spin 8s linear infinite;
+        }
+
+        .profile-image-inner {
+            position: absolute;
+            inset: 4px;
+            border-radius: 50%;
+            background: var(--color-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            z-index: 2;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-text h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .profile-text p {
+            color: var(--color-text-muted);
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        .profile-traits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .trait-badge {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            padding: 15px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .trait-badge:hover {
+            background: rgba(0, 217, 255, 0.2);
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .trait-badge i {
+            display: block;
+            font-size: 1.8em;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .trait-badge span {
+            font-size: 0.85em;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        /* ============================================
+           EXPERIENCE SECTION
+           ============================================ */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--color-primary), var(--color-accent), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            width: 50%;
+            padding: 0 30px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 16px;
+            height: 16px;
+            background: var(--color-dark);
+            border: 3px solid var(--color-primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .experience-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            transition: var(--transition);
+        }
+
+        .experience-card:hover {
+            border-color: rgba(0, 217, 255, 0.4);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+
+        .exp-date {
+            color: var(--color-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .exp-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 10px 0;
+        }
+
+        .exp-company {
+            color: var(--color-secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .exp-description {
+            color: var(--color-text-muted);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .exp-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(153, 69, 255, 0.2);
+            color: var(--color-accent);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            border: 1px solid rgba(153, 69, 255, 0.3);
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                width: 100%;
+                padding-left: 80px;
+                text-align: left;
+            }
+
+            .timeline-item::before {
+                left: 20px;
+            }
+        }
+
+        /* ============================================
+           FORMATION / EDUCATION SECTION
+           ============================================ */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .education-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .education-card:hover {
+            border-color: rgba(0, 217, 255, 0.4);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-8px);
+        }
+
+        .education-icon {
+            font-size: 3em;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .education-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 10px;
+        }
+
+        .education-period {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--color-secondary);
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .education-institution {
+            color: var(--color-text-muted);
+            margin-bottom: 10px;
+        }
+
+        /* ============================================
+           SKILLS SECTION
+           ============================================ */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-category {
+            padding: 30px;
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            border-color: rgba(0, 217, 255, 0.4);
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-category-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .skill-name span:first-child {
+            color: var(--color-text);
+        }
+
+        .skill-name span:last-child {
+            color: var(--color-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            border-radius: 3px;
+            animation: fillBar 2s ease-out forwards;
+            transform-origin: left;
+        }
+
+        @keyframes fillBar {
+            from {
+                width: 0;
+            }
+        }
+
+        /* ============================================
+           PROJECTS SECTION
+           ============================================ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: rgba(0, 217, 255, 0.4);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(153, 69, 255, 0.1));
+            padding: 30px;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .project-icon {
+            font-size: 2em;
+            color: var(--color-primary);
+        }
+
+        .project-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--color-text);
+        }
+
+        .project-content {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-date {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--color-secondary);
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: var(--color-text-muted);
+            margin-bottom: 20px;
+            line-height: 1.8;
+            flex: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        .tech-tag {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--color-primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            font-weight: 500;
+        }
+
+        /* ============================================
+           CERTIFICATIONS SECTION
+           ============================================ */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: var(--radius-lg);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .cert-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .cert-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .cert-badge {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .cert-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 10px;
+        }
+
+        .cert-date {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--color-secondary);
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(26, 31, 58, 0.4);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            border-color: rgba(0, 217, 255, 0.3);
+            background: rgba(26, 31, 58, 0.6);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            font-size: 1.5em;
+            color: var(--color-primary);
+            flex-shrink: 0;
+            width: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-text h4 {
+            color: var(--color-text);
+            margin-bottom: 5px;
+        }
+
+        .contact-text p {
+            color: var(--color-text-muted);
+            font-size: 0.95em;
+        }
+
+        .contact-form {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--color-text);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            color: var(--color-text);
+            font-family: inherit;
+            transition: var(--transition);
+            font-size: 0.95em;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-dark);
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: rgba(5, 8, 18, 0.8);
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--color-text-muted);
+            margin-top: 100px;
+        }
+
+        footer p {
+            margin-bottom: 15px;
+        }
+
+        /* ============================================
+           AI CHAT WIDGET
+           ============================================ */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border: none;
+            color: var(--color-dark);
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.4);
+        }
+
+        .chat-box {
+            position: absolute;
+            bottom: 100px;
+            right: 0;
+            width: 350px;
+            max-width: 90vw;
+            background: rgba(26, 31, 58, 0.95);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+            display: none;
+            flex-direction: column;
+            max-height: 500px;
+            animation: slideUp 0.3s ease;
+        }
+
+        .chat-box.active {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h4 {
+            color: var(--color-primary);
+            font-size: 1em;
+            margin: 0;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: var(--color-text-muted);
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: var(--radius-sm);
+            line-height: 1.5;
+        }
+
+        .chat-message.bot {
+            background: rgba(0, 217, 255, 0.1);
+            border-left: 3px solid var(--color-primary);
+            color: var(--color-text);
+        }
+
+        .chat-message.user {
+            background: rgba(153, 69, 255, 0.2);
+            border-left: 3px solid var(--color-accent);
+            color: var(--color-text);
+            text-align: right;
+        }
+
+        .chat-input-group {
+            padding: 15px;
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            color: var(--color-text);
+            font-family: inherit;
+            font-size: 0.9em;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .chat-send {
+            background: var(--color-primary);
+            border: none;
+            color: var(--color-dark);
+            border-radius: var(--radius-sm);
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .chat-send:hover {
+            background: var(--color-secondary);
+        }
+
+        @media (max-width: 480px) {
+            .chat-widget {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .chat-box {
+                width: calc(100vw - 40px);
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            :root {
+                font-size: 14px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero-info {
+                gap: 15px;
+            }
+
+            .timeline::before {
+                left: 15px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                width: 100%;
+                padding-left: 60px;
+                text-align: left;
+            }
+
+            .timeline-item::before {
+                left: 15px;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero-title {
+                font-size: 2em;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+            }
+
+            .cta-buttons {
+                gap: 10px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">MT /</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#profile">Profil</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#formation">Formation</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-subtitle">Bienvenue à mon portfolio</div>
+                    <h1 class="hero-title">MAROUB TAOUFIQ</h1>
+                    <p class="hero-tagline">Étudiant en Infrastructures Digitales & Intelligence Artificielle | Spécialisé en Networking, Cybersécurité & IA</p>
+                    
+                    <div class="hero-info">
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>maroub.taoufiq@email.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+212 XXX-XXXXXX</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-location-dot"></i>
+                            <span>Maroc</span>
+                        </div>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            Me Contacter
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <i class="fas fa-briefcase"></i>
+                            Voir Mes Projets
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile">
+            <div class="container">
+                <h2 class="section-title">À <span>Propos</span></h2>
+                <div class="profile-container">
+                    <div class="profile-image">
+                        <div class="profile-image-wrapper">
+                            <div class="profile-image-inner">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-text reveal">
+                        <h3>Qui suis-je ?</h3>
+                        <p>
+                            Je suis étudiant en Infrastructures Digitales et Intelligence Artificielle, passionné par la résolution de problèmes techniques complexes et l'innovation technologique. Avec une expérience pratique dans les domaines du networking, de la cybersécurité et de l'administration systèmes, je me concentre sur le développement de solutions robustes et sécurisées.
+                        </p>
+                        <p>
+                            Ma curiosité naturelle pour les technologies émergentes me pousse constamment à approfondir mes connaissances en cloud computing, virtualisation et sécurité informatique. Je suis motivé par la création de systèmes résilients et performants qui créent de la valeur.
+                        </p>
+                        <div class="profile-traits">
+                            <div class="trait-badge reveal">
+                                <i class="fas fa-network-wired"></i>
+                                <span>Networking</span>
+                            </div>
+                            <div class="trait-badge reveal">
+                                <i class="fas fa-shield"></i>
+                                <span>Cybersécurité</span>
+                            </div>
+                            <div class="trait-badge reveal">
+                                <i class="fas fa-brain"></i>
+                                <span>IA & ML</span>
+                            </div>
+                            <div class="trait-badge reveal">
+                                <i class="fas fa-server"></i>
+                                <span>Sysadmin</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title">Expérience <span>Professionnelle</span></h2>
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="experience-card">
+                            <div class="exp-date">Mars - Avril 2025</div>
+                            <div class="exp-title">Technicien Réseaux</div>
+                            <div class="exp-company">NOVAYATEC</div>
+                            <div class="exp-description">
+                                Gestion et configuration d'infrastructures réseaux complexes. Mise en place de solutions de connectivité, maintenance des équipements réseau et optimisation des performances. Collaboration étroite avec l'équipe IT pour assurer la disponibilité des services.
+                            </div>
+                            <div class="exp-tags">
+                                <span class="tag">Networking</span>
+                                <span class="tag">Infrastructure</span>
+                                <span class="tag">Support IT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="experience-card">
+                            <div class="exp-date">Mars - Avril 2024</div>
+                            <div class="exp-title">Spécialiste Cybersécurité & Réseaux</div>
+                            <div class="exp-company">FAMALUX</div>
+                            <div class="exp-description">
+                                Audit de sécurité, identification et mitigation des vulnérabilités. Configuration de pare-feu, gestion des accès et mise en place de politiques de sécurité. Test de pénétration et recommandations pour renforcer la posture de sécurité.
+                            </div>
+                            <div class="exp-tags">
+                                <span class="tag">Cybersécurité</span>
+                                <span class="tag">Audit</span>
+                                <span class="tag">Pénétration</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="experience-card">
+                            <div class="exp-date">Mai - Juin 2020</div>
+                            <div class="exp-title">Administrateur Systèmes & Support</div>
+                            <div class="exp-company">Expérience Pratique</div>
+                            <div class="exp-description">
+                                Gestion des serveurs et stations de travail. Installation et maintenance de systèmes d'exploitation, gestion des utilisateurs et des droits d'accès. Support technique utilisateurs et résolution de problèmes systèmes.
+                            </div>
+                            <div class="exp-tags">
+                                <span class="tag">Windows Server</span>
+                                <span class="tag">Linux</span>
+                                <span class="tag">Administration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formation Section -->
+        <section id="formation">
+            <div class="container">
+                <h2 class="section-title">Formation <span>Académique</span></h2>
+                <div class="education-grid">
+                    <div class="education-card reveal">
+                        <div class="education-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="education-title">Infrastructure Digitale</div>
+                        <div class="education-period">2023 - 2025</div>
+                        <div class="education-institution">OFPPT / Centre de Formation</div>
+                    </div>
+
+                    <div class="education-card reveal">
+                        <div class="education-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="education-title">Réseau Informatique</div>
+                        <div class="education-period">2019 - 2021</div>
+                        <div class="education-institution">Formation Technique</div>
+                    </div>
+
+                    <div class="education-card reveal">
+                        <div class="education-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="education-title">Baccalauréat Sciences Physiques</div>
+                        <div class="education-period">2018 - 2019</div>
+                        <div class="education-institution">Lycée d'Enseignement Général</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Compétences <span>Techniques</span></h2>
+                <div class="skills-container">
+                    <div class="skill-category reveal">
+                        <h3 class="skill-category-title">
+                            <i class="fas fa-server"></i>
+                            Administration Systèmes
+                        </h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Windows Server</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Linux (Ubuntu/CentOS)</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Cloud Computing (Azure)</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category reveal">
+                        <h3 class="skill-category-title">
+                            <i class="fas fa-shield"></i>
+                            Cybersécurité & Réseaux
+                        </h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Cisco Networking</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Sécurité Informatique</span>
+                                <span>78%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Pare-feu & VPN</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 82%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category reveal">
+                        <h3 class="skill-category-title">
+                            <i class="fas fa-code"></i>
+                            Programmation & IA
+                        </h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Python</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>C/C++</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Machine Learning</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category reveal">
+                        <h3 class="skill-category-title">
+                            <i class="fas fa-tools"></i>
+                            Outils & Technologies
+                        </h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Microsoft 365</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>VMware & VirtualBox</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Power BI & Data Analysis</span>
+                                <span>76%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 76%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Projets <span>Académiques</span></h2>
+                <div class="projects-grid">
+                    <div class="project-card reveal">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-cloud-upload"></i>
+                            </div>
+                            <div class="project-title">Mise à Niveau Infrastructure</div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-date">Avril 2025</div>
+                            <div class="project-description">
+                                Modernisation du parc informatique d'une entreprise avec migration vers une infrastructure cloud. Mise à jour de l'intranet et implémentation de solutions collaboratives.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Cloud</span>
+                                <span class="tech-tag">Infrastructure</span>
+                                <span class="tech-tag">Azure</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card reveal">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <div class="project-title">Audit Sécurité APK Web</div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-date">Avril 2024</div>
+                            <div class="project-description">
+                                Scanner approfondi des failles de sécurité dans une application web mobile. Identification de vulnérabilités critiques et recommandations de remédiation.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Sécurité</span>
+                                <span class="tech-tag">Audit</span>
+                                <span class="tech-tag">APK</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card reveal">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-windows"></i>
+                            </div>
+                            <div class="project-title">Configuration Windows Server</div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-date">Juillet 2020</div>
+                            <div class="project-description">
+                                Configuration complète d'un serveur Windows Server 2019 avec gestion des domaines, des utilisateurs et des services de réseau avancés.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Windows</span>
+                                <span class="tech-tag">AD</span>
+                                <span class="tech-tag">Server</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <div class="container">
+                <h2 class="section-title">Certifications & <span>Badges</span></h2>
+                <div class="certifications-grid">
+                    <div class="cert-card reveal">
+                        <div class="cert-badge">🏅</div>
+                        <div class="cert-name">BADGE CISCO</div>
+                        <div class="cert-date">Mars 2024</div>
+                    </div>
+
+                    <div class="cert-card reveal">
+                        <div class="cert-badge">🔐</div>
+                        <div class="cert-name">ISC² Certification</div>
+                        <div class="cert-date">Juin 2024</div>
+                    </div>
+
+                    <div class="cert-card reveal">
+                        <div class="cert-badge">🌐</div>
+                        <div class="cert-name">CISCO Networking</div>
+                        <div class="cert-date">Fév - Oct 2021</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Me <span>Contacter</span></h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3 style="color: var(--color-text); margin-bottom: 30px;">Informations de Contact</h3>
+                        
+                        <div class="contact-item reveal">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>maroub.taoufiq@email.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item reveal">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Téléphone</h4>
+                                <p>+212 XXX-XXXXXX</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item reveal">
+                            <div class="contact-icon">
+                                <i class="fas fa-location-dot"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Localisation</h4>
+                                <p>Maroc</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item reveal">
+                            <div class="contact-icon">
+                                <i class="fas fa-linkedin"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>LinkedIn</h4>
+                                <p>linkedin.com/in/maroub-taoufiq</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form reveal" id="contactForm">
+                        <h3 style="color: var(--color-text); margin-bottom: 30px;">Envoyer un Message</h3>
+                        
+                        <div class="form-group">
+                            <label for="name">Votre Nom</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Votre Email</label>
+                            <input type="email" id="email" name="email" required placeholder="vous@exemple.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Sujet du message">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required placeholder="Votre message ici..."></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">Envoyer le Message</button>
+                        <p id="formFeedback" style="color: var(--color-secondary); margin-top: 15px; text-align: center; display: none;"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-button" id="chatButton">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <h4>Assistant IA</h4>
+                <button class="chat-close" id="chatClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    Bonjour! Je suis l'assistant IA de MAROUB. Posez-moi des questions sur son expérience, ses compétences ou ses projets! 🤖
+                </div>
+            </div>
+            <div class="chat-input-group">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Posez une question...">
+                <button class="chat-send" id="chatSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MAROUB TAOUFIQ - Tous droits réservés</p>
+            <p style="font-size: 0.85em; color: var(--color-text-muted);">💻 Portfolio Moderne - Infrastructures Digitales & IA</p>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // PARTICLE BACKGROUND
+        // ============================================
+        function initParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = window.innerWidth < 768 ? 20 : 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDuration = Math.random() * 20 + 10 + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // ============================================
+        // NAVIGATION
+        // ============================================
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Highlight nav on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // ============================================
+        // SCROLL ANIMATIONS
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ============================================
+        // SKILL BARS ANIMATION
+        // ============================================
+        window.addEventListener('scroll', () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const barRect = bar.getBoundingClientRect();
+                if (barRect.top < window.innerHeight && barRect.bottom > 0) {
+                    if (!bar.hasAttribute('data-animated')) {
+                        bar.setAttribute('data-animated', 'true');
+                        bar.style.animation = 'fillBar 2s ease-out forwards';
+                    }
+                }
+            });
+        });
+
+        // ============================================
+        // CHAT WIDGET
+        // ============================================
+        const chatButton = document.getElementById('chatButton');
+        const chatBox = document.getElementById('chatBox');
+        const chatClose = document.getElementById('chatClose');
+        const chatSend = document.getElementById('chatSend');
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
+
+        // Chat responses database
+        const chatResponses = {
+            'salut': 'Salut! Comment puis-je vous aider? 😊',
+            'bonjour': 'Bonjour! Bienvenue sur le portfolio de MAROUB. Que souhaitez-vous savoir?',
+            'experience': 'MAROUB a participé à plusieurs expériences professionnelles importantes:\n• NOVAYATEC (2025) - Technicien Réseaux\n• FAMALUX (2024) - Cybersécurité & Réseaux\n• Admin Systèmes & Support (2020)',
+            'competences': 'Les compétences principales incluent:\n✓ Administration Systèmes (Windows, Linux, Azure)\n✓ Cybersécurité & Réseaux\n✓ Programmation (Python, C/C++)\n✓ Machine Learning & IA\n✓ Virtualisation (VMware, VirtualBox)',
+            'projets': 'Projets académiques:\n1. Mise à Niveau du Parc IT (Avril 2025)\n2. Scanner Failles APK Web (Avril 2024)\n3. Configuration Windows Server 2019 (Juillet 2020)',
+            'certifications': 'MAROUB possède les certifications:\n🏅 BADGE CISCO (Mars 2024)\n🔐 ISC² (Juin 2024)\n🌐 CISCO Networking (2021)',
+            'formation': 'Formation académique:\n📚 Infrastructure Digitale (2023-2025)\n🖥️ Réseau Informatique (2019-2021)\n📖 Bac Sciences Physiques (2018-2019)',
+            'contact': 'Pour contacter MAROUB:\n📧 maroub.taoufiq@email.com\n📞 +212 XXX-XXXXXX\n📍 Maroc',
+            'defaut': 'Je ne suis pas sûr de comprendre. Vous pouvez me poser des questions sur l\'expérience, les compétences, les projets, la formation ou les certifications! 🤖'
+        };
+
+        function findBestMatch(input) {
+            const lowerInput = input.toLowerCase();
+            for (const [key, value] of Object.entries(chatResponses)) {
+                if (lowerInput.includes(key)) {
+                    return value;
+                }
+            }
+            return chatResponses.defaut;
+        }
+
+        chatButton.addEventListener('click', () => {
+            chatBox.classList.toggle('active');
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatBox.classList.remove('active');
+        });
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-message user';
+            userMsg.textContent = message;
+            chatMessages.appendChild(userMsg);
+
+            // Clear input
+            chatInput.value = '';
+
+            // Simulate bot response with delay
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'chat-message bot';
+                botMsg.textContent = findBestMatch(message);
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 600);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // ============================================
+        // CONTACT FORM
+        // ============================================
+        const contactForm = document.getElementById('contactForm');
+        const formFeedback = document.getElementById('formFeedback');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                formFeedback.textContent = '❌ Tous les champs sont requis!';
+                formFeedback.style.display = 'block';
+                return;
+            }
+
+            // Simulate form submission
+            formFeedback.textContent = '✅ Message envoyé avec succès! Merci de votre contact.';
+            formFeedback.style.display = 'block';
+            
+            // Reset form
+            contactForm.reset();
+
+            // Hide feedback after 5 seconds
+            setTimeout(() => {
+                formFeedback.style.display = 'none';
+            }, 5000);
+
+            console.log('Form Data:', { name, email, subject, message });
+        });
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        initParticles();
+    </script>
+</body>
+</html>
