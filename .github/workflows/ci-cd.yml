@@ -1,0 +1,25 @@
+name: CI/CD Static Web App
+
+on:
+  push:
+    branches: ["main"]
+
+
+jobs:
+  ci:
+    name: Validate HTML and JS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check JavaScript syntax
+        run: node --check app.js
+
+      - name: Validate HTML files
+        run: npx --yes htmlhint "**/*.html"
