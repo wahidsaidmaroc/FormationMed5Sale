@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hicham Ziate - Data Analyst & IA Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0066ff;
+      --primary-dark: #0052cc;
+      --secondary: #667eea;
+      --accent: #ff6b6b;
+      --dark: #1a1a2e;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --white: #ffffff;
+      --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 1rem 0;
+    }
+
+    .container-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn-cta {
+      background: var(--primary);
+      color: var(--white) !important;
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-cta:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero-section {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(0, 102, 255, 0.1));
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .container-wide {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-section .container-wide {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content .hero-title {
+      font-size: 3.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      display: block;
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* ========== SECTIONS ========== */
+    .section {
+      padding: 6rem 2rem;
+    }
+
+    .section-title {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-description {
+      text-align: center;
+      color: var(--gray);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+
+    /* ========== ABOUT SECTION ========== */
+    .about-section {
+      background: var(--light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .about-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .about-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .about-card i {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .about-card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .about-card p {
+      color: var(--gray);
+    }
+
+    /* ========== SKILLS SECTION ========== */
+    .skills-section {
+      background: var(--white);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .skill-category {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      box-shadow: var(--shadow-sm);
+      transform: translateX(5px);
+    }
+
+    .skill-category h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-tag {
+      background: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* ========== PROJECTS SECTION ========== */
+    .projects-section {
+      background: var(--light);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1rem;
+    }
+
+    .project-header i {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .project-tag {
+      background: var(--primary);
+      color: var(--white);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .project-card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .project-card p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .project-tech span {
+      background: var(--light);
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    /* ========== EXPERIENCE SECTION ========== */
+    .experience-section {
+      background: var(--white);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      margin: 3rem auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--primary), var(--secondary));
+    }
+
+    .timeline-item {
+      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      order: -1;
+    }
+
+    .timeline-marker {
+      width: 15px;
+      height: 15px;
+      background: var(--primary);
+      border: 4px solid var(--white);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--primary);
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      grid-column: 1 / -1;
+    }
+
+    .timeline-content {
+      background: var(--light);
+      padding: 1.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      box-shadow: var(--shadow-sm);
+      transform: translateX(5px);
+    }
+
+    .timeline-content h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .timeline-date {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-content p {
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* ========== CONTACT SECTION ========== */
+    .contact-section {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+      color: var(--primary);
+    }
+
+    .contact-card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .contact-card p {
+      color: var(--gray);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--dark);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem 0;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-section .container-wide {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+        gap: 2rem;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .timeline::before {
+        left: 10px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .timeline-item:nth-child(even) .timeline-content {
+        order: unset;
+      }
+
+      .timeline-marker {
+        left: 10px;
+      }
+
+      .timeline-content {
+        margin-left: 30px;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container-nav">
+      <a href="#" class="logo">
+        <span class="logo-icon">HZ</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#contact" class="btn-cta">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container-wide">
+      <div class="hero-content">
+        <h1 class="hero-title">ZIATE HICHAM</h1>
+        <p class="hero-subtitle">Data Analyst Spécialisé en Intelligence Artificielle</p>
+        <p class="hero-description">Transforme les données complexes en informations stratégiques | Machine Learning & Analytics</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Contactez-moi</a>
+          <a href="https://www.linkedin.com/in/hicham-ziate-970005237/" target="_blank" class="btn btn-secondary">Voir LinkedIn</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Projets</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">Technologies</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Dédication</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container-wide">
+      <h2 class="section-title">À propos</h2>
+      <p class="section-description">Passionné par l'Intelligence Artificielle et l'analyse des données, je mets à profit mes compétences pour transformer des données complexes en informations stratégiques et exploitables. Spécialisé en bases de données, statistiques, data visualisation et solutions cloud.</p>
+      <div class="about-grid">
+        <div class="about-card">
+          <i class="fas fa-database"></i>
+          <h3>Bases de Données & ETL</h3>
+          <p>SQL, Power Query et solutions cloud pour l'intégration et la transformation de données</p>
+        </div>
+        <div class="about-card">
+          <i class="fas fa-brain"></i>
+          <h3>Machine Learning & IA</h3>
+          <p>Modèles prédictifs, deep learning et NLP avec TensorFlow, PyTorch et Scikit-learn</p>
+        </div>
+        <div class="about-card">
+          <i class="fas fa-chart-bar"></i>
+          <h3>Business Intelligence</h3>
+          <p>Dashboards interactifs Power BI et visualisations analytiques pour la décision</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section skills-section">
+    <div class="container-wide">
+      <h2 class="section-title">Compétences</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Programmation</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">PySpark</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Intelligence Artificielle</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Deep Learning</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">TensorFlow</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Data Science</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Seaborn</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Frameworks & Cloud</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">AWS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section projects-section">
+    <div class="container-wide">
+      <h2 class="section-title">Projets Featured</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-chart-line"></i>
+            <span class="project-tag">Data Analysis</span>
+          </div>
+          <h3>Analyse des données des systèmes éducatifs</h3>
+          <p>Manipulation de dataframes et analyse exploratoire des données éducatives avec visualisations avancées</p>
+          <div class="project-tech">
+            <span>NumPy</span>
+            <span>Pandas</span>
+            <span>Matplotlib</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-bolt"></i>
+            <span class="project-tag">ML</span>
+          </div>
+          <h3>Anticipation des besoins de consommation électrique</h3>
+          <p>Modèles d'apprentissage supervisé (Ridge, Lasso, Random Forest, XGBoost, SVM) pour prédiction énergétique</p>
+          <div class="project-tech">
+            <span>Scikit-learn</span>
+            <span>Random Forest</span>
+            <span>XGBoost</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-users"></i>
+            <span class="project-tag">Clustering</span>
+          </div>
+          <h3>Segmentation client d'un site e-commerce</h3>
+          <p>Modèles de clustering (k-means, DBSCAN, Hiérarchique) avec analyse RFM et stabilité des modèles</p>
+          <div class="project-tech">
+            <span>K-means</span>
+            <span>DBSCAN</span>
+            <span>t-SNE</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-cloud"></i>
+            <span class="project-tag">Cloud</span>
+          </div>
+          <h3>Déploiement d'un modèle dans le cloud</h3>
+          <p>Parallélisation PySpark et déploiement d'un modèle de classification sur AWS (EC2, S3, SageMaker, EMR)</p>
+          <div class="project-tech">
+            <span>PySpark</span>
+            <span>AWS</span>
+            <span>SageMaker</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="project-tag">Time Series</span>
+          </div>
+          <h3>Analyse des données de ventes mensuelles</h3>
+          <p>Manipulation de dataframes, calcul du chiffre d'affaires et visualisation des tendances de ventes</p>
+          <div class="project-tech">
+            <span>Pandas</span>
+            <span>Matplotlib</span>
+            <span>Seaborn</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-book"></i>
+            <span class="project-tag">Statistics</span>
+          </div>
+          <h3>Analyse des notes d'élèves et statistiques scolaires</h3>
+          <p>Calcul de statistiques scolaires (moyennes par matière, tranches de notes) et visualisation des performances</p>
+          <div class="project-tech">
+            <span>NumPy</span>
+            <span>Pandas</span>
+            <span>Matplotlib</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-database"></i>
+            <span class="project-tag">ETL</span>
+          </div>
+          <h3>Consolidation et analyse décisionnelle avec Power Query</h3>
+          <p>ETL intégré pour extraire, transformer et consolider les données de ventes multi-sources avec Power BI</p>
+          <div class="project-tech">
+            <span>Power Query</span>
+            <span>Power BI</span>
+            <span>Excel</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fas fa-chart-bar"></i>
+            <span class="project-tag">BI</span>
+          </div>
+          <h3>Analyse des ventes avec Power BI</h3>
+          <p>Création de mesures DAX avancées pour KPIs et visualisations interactives pour suivi du CA et comparaisons annuelles</p>
+          <div class="project-tech">
+            <span>Power BI</span>
+            <span>DAX</span>
+            <span>Power Query</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container-wide">
+      <h2 class="section-title">Contactez-moi</h2>
+      <p class="section-description">Intéressé par collaboration ou discussion? N'hésitez pas à prendre contact!</p>
+      <div class="contact-grid">
+        <a href="mailto:hicham.ziate@gmail.com" class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p>hicham.ziate@gmail.com</p>
+        </a>
+        <a href="tel:+212603028666" class="contact-card">
+          <i class="fas fa-phone"></i>
+          <h3>Téléphone</h3>
+          <p>+212 603 028 666</p>
+        </a>
+        <a href="https://www.linkedin.com/in/hicham-ziate-970005237/" target="_blank" class="contact-card">
+          <i class="fab fa-linkedin"></i>
+          <h3>LinkedIn</h3>
+          <p>Hicham Ziate</p>
+        </a>
+        <a href="#" class="contact-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Localisation</h3>
+          <p>Rabat, Maroc</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Ziate Hicham. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    // ========== SMOOTH SCROLL & NAVIGATION ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // ========== NAVBAR BACKGROUND ON SCROLL ==========
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+      } else {
+        navbar.style.boxShadow = 'none';
+      }
+    });
+
+    // ========== INTERSECTION OBSERVER FOR ANIMATIONS ==========
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.about-card, .skill-category, .project-card, .timeline-item, .contact-card').forEach(el => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+
+    // ========== ACTIVE NAVIGATION LINK ==========
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('section[id]');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.style.color = '';
+        if (link.getAttribute('href') === `#${current}`) {
+          link.style.color = 'var(--primary)';
+        }
+      });
+    });
+
+    console.log('Portfolio chargé avec succès! 🚀');
+  </script>
+</body>
+</html>
