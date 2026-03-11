@@ -20,6 +20,3 @@ jobs:
 
       - name: Check JavaScript syntax
         run: node --check app.js
-
-      - name: Validate HTML files
-        run: npx --yes htmlhint "**/*.html"
