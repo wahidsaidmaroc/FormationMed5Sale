@@ -10,6 +10,9 @@ jobs:
     name: Validate HTML and JS
     runs-on: ubuntu-latest
     steps:
+
+     # Ce bloc sert à récupérer le code de votre dépôt dans la machine GitHub Actions (le runner), pour que les étapes suivantes puissent lire vos fichiers.
+
       - name: Checkout source
         uses: actions/checkout@v4
 
